@@ -5,7 +5,8 @@ COPY elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 COPY --chmod=755 entrypoint.sh /usr/local/bin/entrypoint.sh
 
 USER 0
-RUN mkdir -p /esdata && chown -R 1000:0 /esdata
+RUN apt-get update && apt-get install -y sudo && \
+    echo "elasticsearch ALL=(root) NOPASSWD: /bin/chown" > /etc/sudoers.d/elasticsearch
 USER 1000:0
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
