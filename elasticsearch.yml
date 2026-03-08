@@ -3,4 +3,4 @@ node.name: "elasticsearch"
 path.data: "/esdata"
 node.store.allow_mmap: "false"
 network.host: 0.0.0.0
-xpack.security.enabled: "false"
+xpack.security.enabled: "true"
